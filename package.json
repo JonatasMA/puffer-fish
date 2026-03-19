@@ -1,8 +1,8 @@
 {
-    "name": "container-dependency-mapper",
-    "displayName": "Container Dependency Mapper",
-    "description": "Maps Container::get() calls to classes in dependencias.json",
-    "version": "0.0.18",
+    "name": "puffer-fish",
+    "displayName": "Puffer Fish",
+    "description": "Ajuda a trocar os padrões antigos do CRM para os padrões novos",
+    "version": "0.0.20",
     "engines": {
         "vscode": "^1.78.0"
     },
@@ -17,34 +17,36 @@
         "commands": [
             {
                 "command": "extension.replaceContainerGet",
-                "title": "Replace Container::get"
+                "title": "PufferFish::ReclaceContainerGet"
             },
             {
                 "command": "extension.replaceConteinerEntidade",
-                "title": "Replace ConteinerEntidade"
+                "title": "PufferFish::ReclaceConteinerEntidade"
             },
             {
                 "command": "extension.replaceGetCampo",
-                "title": "Replace getCampo"
+                "title": "PufferFish::ReplaceGetMsg"
             },
             {
                 "command": "extension.replaceSetCampo",
-                "title": "Replace setCampo"
+                "title": "PufferFish::ReplaceSetMsg"
             },
             {
                 "command": "extension.replaceAllPatterns",
-                "title": "Replace All Patterns"
+                "title": "PufferFish::ReplaceAll"
             }
         ]
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./"
+        "watch": "tsc -watch -p ./",
+        "package": "vsce package"
     },
     "devDependencies": {
         "@types/vscode": "^1.78.0",
-        "typescript": "^4.9.4"
+        "typescript": "^4.9.4",
+        "vsce": "^2.15.0"
     },
     "tasks": [
         {
