@@ -1,0 +1,58 @@
+{
+    "name": "container-dependency-mapper",
+    "displayName": "Container Dependency Mapper",
+    "description": "Maps Container::get() calls to classes in dependencias.json",
+    "version": "0.0.18",
+    "engines": {
+        "vscode": "^1.78.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onStartupFinished"
+    ],
+    "main": "./extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.replaceContainerGet",
+                "title": "Replace Container::get"
+            },
+            {
+                "command": "extension.replaceConteinerEntidade",
+                "title": "Replace ConteinerEntidade"
+            },
+            {
+                "command": "extension.replaceGetCampo",
+                "title": "Replace getCampo"
+            },
+            {
+                "command": "extension.replaceSetCampo",
+                "title": "Replace setCampo"
+            },
+            {
+                "command": "extension.replaceAllPatterns",
+                "title": "Replace All Patterns"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.78.0",
+        "typescript": "^4.9.4"
+    },
+    "tasks": [
+        {
+            "type": "npm",
+            "script": "compile",
+            "group": "build",
+            "problemMatcher": [],
+            "label": "npm: compile"
+        }
+    ]
+}

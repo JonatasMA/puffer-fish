@@ -1,0 +1,24 @@
+{
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Extension",
+      "program": "${workspaceFolder}/vscode-extension/extension.js",
+      "args": [],
+      "runtimeExecutable": "${input:runtimeExecutable}",
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "preLaunchTask": "npm: compile"
+    }
+  ],
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "runtimeExecutable",
+      "description": "Path to Node.js executable"
+    }
+  ]
+}
