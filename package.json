@@ -2,7 +2,7 @@
     "name": "puffer-fish",
     "displayName": "Puffer Fish",
     "description": "Ajuda a trocar os padrões antigos do CRM para os padrões novos",
-    "version": "0.0.20",
+    "version": "0.0.21",
     "engines": {
         "vscode": "^1.78.0"
     },
@@ -56,5 +56,10 @@
             "problemMatcher": [],
             "label": "npm: compile"
         }
-    ]
+    ],
+    "homepage": "https://github.com/JonatasMA/puffer-fish/blob/main/README.md",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/JonatasMA/puffer-fish.git"
+    }
 }
