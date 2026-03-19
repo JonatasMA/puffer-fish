@@ -24,7 +24,7 @@ class JsonClassMapper {
     private async loadDependencies() {
         this.dependencies.clear();
         const files = await vscode.workspace.findFiles(this.findFilesPattern, '**/vendor/**, **/node_modules/**');
-        
+
         for (const file of files) {
             try {
                 const document = await vscode.workspace.openTextDocument(file);
@@ -61,6 +61,7 @@ function resolveAndInjectImport(
     hoveredText: string,
     injectedClasses: Map<string, string> = new Map()
 ): string {
+    className = className.replace(/^\\/, '');
     if (injectedClasses.has(className)) {
         return injectedClasses.get(className)!;
     }
@@ -400,19 +401,19 @@ export function activate(context: vscode.ExtensionContext) {
     const cmdContainerGet = vscode.commands.registerCommand('extension.replaceContainerGet', () => {
         if (vscode.window.activeTextEditor) executeBulkReplacements(vscode.window.activeTextEditor, dependencyMapper, entityMapper, ['container']);
     });
-    
+
     const cmdConteinerEntidade = vscode.commands.registerCommand('extension.replaceConteinerEntidade', () => {
         if (vscode.window.activeTextEditor) executeBulkReplacements(vscode.window.activeTextEditor, dependencyMapper, entityMapper, ['entidade']);
     });
-    
+
     const cmdGetCampo = vscode.commands.registerCommand('extension.replaceGetCampo', () => {
         if (vscode.window.activeTextEditor) executeBulkReplacements(vscode.window.activeTextEditor, dependencyMapper, entityMapper, ['getCampo']);
     });
-    
+
     const cmdSetCampo = vscode.commands.registerCommand('extension.replaceSetCampo', () => {
         if (vscode.window.activeTextEditor) executeBulkReplacements(vscode.window.activeTextEditor, dependencyMapper, entityMapper, ['setCampo']);
     });
-    
+
     const cmdAllPatterns = vscode.commands.registerCommand('extension.replaceAllPatterns', () => {
         if (vscode.window.activeTextEditor) executeBulkReplacements(vscode.window.activeTextEditor, dependencyMapper, entityMapper, ['container', 'entidade', 'getCampo', 'setCampo']);
     });
