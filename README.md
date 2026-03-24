@@ -36,11 +36,11 @@ Acesse a **Paleta de Comandos** (`Ctrl+Shift+P` no Windows/Linux ou `Cmd+Shift+P
 
 | Comando na Paleta | ID do Comando (Keybinds) | Descrição |
 | :--- | :--- | :--- |
-| **PufferFish::ReclaceContainerGet** | `extension.replaceContainerGet` | Substitui simultaneamente TODAS as ocorrências de `Container::get` isoladamente. |
-| **PufferFish::ReclaceConteinerEntidade** | `extension.replaceConteinerEntidade` | Substitui TODAS as ocorrências de `ConteinerEntidade::getInstancia`. |
-| **PufferFish::ReplaceGetMsg** | `extension.replaceGetCampo` | Altera todos os padrões do método `getCampo`. |
-| **PufferFish::ReplaceSetMsg** | `extension.replaceSetCampo` | Altera todos os padrões do método `setCampo`. |
-| **PufferFish::ReplaceAll** | `extension.replaceAllPatterns` | **Substitui TODOS os padrões suportados de uma única vez** no arquivo atual. |
+| **PufferFish: Replace Container::Get** | `extension.replaceContainerGet` | Substitui simultaneamente TODAS as ocorrências de `Container::get` isoladamente. |
+| **PufferFish: Replace ContainerEntidade::getInstancia** | `extension.replaceConteinerEntidade` | Substitui TODAS as ocorrências de `ConteinerEntidade::getInstancia`. |
+| **PufferFish: Replace getCampo** | `extension.replaceGetCampo` | Altera todos os padrões do método `getCampo`. |
+| **PufferFish: Replace setCampo** | `extension.replaceSetCampo` | Altera todos os padrões do método `setCampo`. |
+| **PufferFish: Replace All** | `extension.replaceAllPatterns` | **Substitui TODOS os padrões suportados de uma única vez** no arquivo atual. |
 
 > **Dica:** O mecanismo de refatoração em lote (*bulk replacements*) é super seguro com imports. Se 10 substituições no arquivo exigirem a classe `App\Services\Produto`, a extensão vai importar `App\Services\Produto` apenas uma única vez.
 

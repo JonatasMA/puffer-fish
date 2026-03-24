@@ -101,7 +101,7 @@ function resolveAndInjectImport(
         const aliasPart = hoveredText === classShortName ? '' : ` as ${hoveredText}`;
         const newUseStatement = `use ${className}${aliasPart};\n`;
 
-        vscode.window.showInformationMessage(`Imported \${className}`);
+        vscode.window.showInformationMessage(`Classe importada ${classShortName}`);
 
         let insertPosition: vscode.Position;
         const namespaceRegex = /^namespace\s+([^;]+);/m;
