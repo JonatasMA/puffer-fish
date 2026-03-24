@@ -2,7 +2,7 @@
     "name": "puffer-fish",
     "displayName": "Puffer Fish",
     "description": "Ajuda a trocar os padrões antigos do CRM para os padrões novos",
-    "version": "0.0.27",
+    "version": "0.0.30",
     "engines": {
         "vscode": "^1.78.0"
     },
@@ -16,23 +16,23 @@
     "contributes": {
         "commands": [
             {
-                "command": "extension.replaceContainerGet",
-                "title": "PufferFish: Replace Container::Get"
+                "command": "extension.pufferFish.replaceConteinerGet",
+                "title": "PufferFish: Replace Conteiner::Get"
             },
             {
-                "command": "extension.replaceConteinerEntidade",
-                "title": "PufferFish: Replace ContainerEntidade::getInstancia"
+                "command": "extension.pufferFish.replaceConteinerEntidade",
+                "title": "PufferFish: Replace ConteinerEntidade::getInstancia"
             },
             {
-                "command": "extension.replaceGetCampo",
+                "command": "extension.pufferFish.replaceGetCampo",
                 "title": "PufferFish: Replace getCampo"
             },
             {
-                "command": "extension.replaceSetCampo",
+                "command": "extension.pufferFish.replaceSetCampo",
                 "title": "PufferFish: Replace setCampo"
             },
             {
-                "command": "extension.replaceAllPatterns",
+                "command": "extension.pufferFish.replaceAllPatterns",
                 "title": "PufferFish: Replace All"
             }
         ]

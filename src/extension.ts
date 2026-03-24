@@ -166,10 +166,10 @@ async function executeBulkReplacements(
 
     await editor.edit(editBuilder => {
         if (modes.includes('container')) {
-            const pattern = /Conteiner(::|->)get\s*\(\s*['"]([^'"]+)['"]\s*(?:,\s*(?:false|FALSE|False)\s*)?\)/g;
+            const pattern = /Conteiner(::|->)get\s*\(\s*['"]([^'"]+)['"]\s*(?:,\s*(?:false|FALSE|False)\s*)?\)/gm;
             let match;
             while ((match = pattern.exec(text)) !== null) {
-                const hoveredText = match[3];
+                const hoveredText = match[2];
                 const className = dependencyMapper.getClassName(hoveredText);
                 if (className) {
                     const nameToUse = resolveAndInjectImport(document, editBuilder, className, hoveredText, injectedClasses);
@@ -182,7 +182,7 @@ async function executeBulkReplacements(
         }
 
         if (modes.includes('entidade')) {
-            const pattern = /ConteinerEntidade(::|->)getInstancia\s*\(\s*['"]([^'"]+)['"]\s*\)/g;
+            const pattern = /ConteinerEntidade(::|->)getInstancia\s*\(\s*['"]([^'"]+)['"]\s*\)/gm;
             let match;
             while ((match = pattern.exec(text)) !== null) {
                 const hoveredText = match[2];
@@ -198,7 +198,7 @@ async function executeBulkReplacements(
         }
 
         if (modes.includes('getCampo')) {
-            const pattern = /(\$[a-zA-Z0-9_]+)->getCampo\s*\(\s*(['"][^'"]+['"])\s*\)->get\s*\(\s*['"]valor['"]\s*\)/g;
+            const pattern = /(\$[a-zA-Z0-9_]+)->getCampo\s*\(\s*(['"][^'"]+['"])\s*\)->get\s*\(\s*['"]valor['"]\s*\)/gm;
             let match;
             while ((match = pattern.exec(text)) !== null) {
                 const varName = match[1];
@@ -398,35 +398,27 @@ export function activate(context: vscode.ExtensionContext) {
         }
     });
 
-    const cmdContainerGet = vscode.commands.registerCommand('extension.replaceContainerGet', () => {
+    const cmdContainerGet = vscode.commands.registerCommand('extension.pufferFish.replaceConteinerGet', () => {
         if (vscode.window.activeTextEditor) executeBulkReplacements(vscode.window.activeTextEditor, dependencyMapper, entityMapper, ['container']);
     });
 
-    const cmdConteinerEntidade = vscode.commands.registerCommand('extension.replaceConteinerEntidade', () => {
+    const cmdConteinerEntidade = vscode.commands.registerCommand('extension.pufferFish.replaceConteinerEntidade', () => {
         if (vscode.window.activeTextEditor) executeBulkReplacements(vscode.window.activeTextEditor, dependencyMapper, entityMapper, ['entidade']);
     });
 
-    const cmdGetCampo = vscode.commands.registerCommand('extension.replaceGetCampo', () => {
+    const cmdGetCampo = vscode.commands.registerCommand('extension.pufferFish.replaceGetCampo', () => {
         if (vscode.window.activeTextEditor) executeBulkReplacements(vscode.window.activeTextEditor, dependencyMapper, entityMapper, ['getCampo']);
     });
 
-    const cmdSetCampo = vscode.commands.registerCommand('extension.replaceSetCampo', () => {
+    const cmdSetCampo = vscode.commands.registerCommand('extension.pufferFish.replaceSetCampo', () => {
         if (vscode.window.activeTextEditor) executeBulkReplacements(vscode.window.activeTextEditor, dependencyMapper, entityMapper, ['setCampo']);
     });
 
-    const cmdAllPatterns = vscode.commands.registerCommand('extension.replaceAllPatterns', () => {
+    const cmdAllPatterns = vscode.commands.registerCommand('extension.pufferFish.replaceAllPatterns', () => {
         if (vscode.window.activeTextEditor) executeBulkReplacements(vscode.window.activeTextEditor, dependencyMapper, entityMapper, ['container', 'entidade', 'getCampo', 'setCampo']);
     });
 
     context.subscriptions.push(hoverProvider, cmdContainerGet, cmdConteinerEntidade, cmdGetCampo, cmdSetCampo, cmdAllPatterns);
-    // const inlineProvider = vscode.languages.registerInlineCompletionItemProvider(
-    //     { pattern: '**' },
-    //     {
-    //         provideInlineCompletionItems: async (document, position) => {
-    //             return [{ text: '< 2) {\n\treturn 1;\n\t}' }]
-    //         },
-    //     },
-    // )
 }
 
 export function deactivate() { }
