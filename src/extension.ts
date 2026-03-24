@@ -166,7 +166,7 @@ async function executeBulkReplacements(
 
     await editor.edit(editBuilder => {
         if (modes.includes('container')) {
-            const pattern = /(\w+\\?)+(::|->)get\s*\(\s*['"]([^'"]+)['"]\s*(?:,\s*(?:false|FALSE|False)\s*)?\)/g;
+            const pattern = /Conteiner(::|->)get\s*\(\s*['"]([^'"]+)['"]\s*(?:,\s*(?:false|FALSE|False)\s*)?\)/g;
             let match;
             while ((match = pattern.exec(text)) !== null) {
                 const hoveredText = match[3];
@@ -257,7 +257,7 @@ async function handleContainerGet(
     lineText: string,
     dependencyMapper: JsonClassMapper
 ): Promise<vscode.Hover | undefined> {
-    const containerGetPattern = /(\w+\\?)+(::|->)get\s*\(\s*['"]([^'"]+)['"]\s*(?:,\s*(?:false|FALSE|False)\s*)?\)/;
+    const containerGetPattern = /Conteiner(::|->)get\s*\(\s*['"]([^'"]+)['"]\s*(?:,\s*(?:false|FALSE|False)\s*)?\)/;
     const match = containerGetPattern.exec(lineText);
     if (!match) return undefined;
 
